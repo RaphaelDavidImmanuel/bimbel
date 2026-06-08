@@ -39,6 +39,23 @@ Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
 
+// untuk cek user yang login
+// Route::get('/cek-user', function () {
+//     return auth()->user();
+// });
+
+
+// untuk logout paksa
+
+// Route::get('/logout-test', function () {
+//     auth()->logout();
+//     request()->session()->invalidate();
+//     request()->session()->regenerateToken();
+//     return redirect('/login');
+// });
+
+// akhir logout paksa
+
 Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
@@ -62,10 +79,31 @@ Route::get('/admin/dashboard', [DashboardController::class, 'admin'])->middlewar
 
 // akhir admin
 
+// Route::get('/cek-guru', function () {
+
+//     return \App\Models\Guru::where(
+//         'user_id',
+//         auth()->id()
+//     )->first();
+
+// })->middleware('auth');
+
 // bagian guru
-Route::get('/guru/dashboard', [DashboardController::class, 'guru'])->middleware(['auth', 'role:guru']);
-Route::resource('guru', GuruController::class)->middleware(['auth', 'role:admin']);
+// Guru
+Route::prefix('guru')->middleware(['auth', 'role:guru'])->group(function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'guru'])->name('guru.dashboard');
+
+        Route::get('/jadwal', [DashboardController::class, 'jadwalGuru'])->name('guru.jadwal');
+
+        Route::get('/murid', [DashboardController::class, 'muridGuru'])->name('guru.murid');
+    });
 // akhir guru
+
+// admin-guru
+Route::resource('guru', GuruController::class)->middleware(['auth', 'role:admin']);
+// Route::resource('admin/guru', GuruController::class)->middleware(['auth', 'role:admin']);
+
 
 // bagian murid
 Route::resource('murid', MuridController::class)->middleware(['auth', 'role:admin']);
