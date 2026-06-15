@@ -29,9 +29,35 @@ class JadwalController extends Controller
 
     public function store(Request $request)
     {
-        Jadwal::create($request->all());
+        $request->validate([
+            'guru_id' => 'required',
+            'murid_id' => 'required',
+            'mata_pelajaran' => 'required',
+            'hari' => 'required',
+            'jam' => 'required',
+            'alamat' => 'required'
 
-        return redirect()->route('jadwal.index');
+        ], [
+
+            'guru_id.required' => 'Guru wajib dipilih',
+            'murid_id.required' => 'Murid wajib dipilih',
+            'mata_pelajaran.required' => 'Mata pelajaran wajib dipilih',
+            'hari.required' => 'Hari wajib dipilih',
+            'jam.required' => 'Jam wajib diisi',
+            'alamat.required' => 'Alamat wajib diisi'
+
+        ]);
+
+        Jadwal::create($request->only([
+            'guru_id',
+            'murid_id',
+            'mata_pelajaran',
+            'hari',
+            'jam',
+            'alamat'
+        ]));
+
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil ditambahkan');
     }
 
     public function edit($id)
@@ -40,18 +66,34 @@ class JadwalController extends Controller
 
         $guru = Guru::select('id', 'nama', 'mata_pelajaran')->get();
         $murid = Murid::all();
-        $mapel = MataPelajaran::all();
+        // $mapel = MataPelajaran::all();
 
-        return view('admin.jadwal.edit', compact('jadwal', 'guru', 'murid', 'mapel'));
+        return view('admin.jadwal.edit', compact('jadwal', 'guru', 'murid'));
     }
 
     public function update(Request $request, $id)
     {
         $jadwal = Jadwal::findOrFail($id);
+        $request->validate([
+            'guru_id' => 'required',
+            'murid_id' => 'required',
+            'mata_pelajaran' => 'required',
+            'hari' => 'required',
+            'jam' => 'required',
+            'alamat' => 'required'
 
-        $jadwal->update($request->all());
+        ]);
 
-        return redirect()->route('jadwal.index');
+        $jadwal->update($request->only([
+            'guru_id',
+            'murid_id',
+            'mata_pelajaran',
+            'hari',
+            'jam',
+            'alamat'
+        ]));
+
+        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil diubah');
     }
 
     public function destroy($id)
