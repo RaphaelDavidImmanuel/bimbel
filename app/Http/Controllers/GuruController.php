@@ -26,8 +26,44 @@ class GuruController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'email' => 'required|email|unique:users,email'
+            'nama' => [
+                'required',
+                'regex:/^[A-Za-z\s]+$/'
+            ],
+            'email' => [
+                'required',
+                'email',
+                'unique:users,email'
+            ],
+            'no_hp' => [
+                'required',
+                'numeric'
+            ],
+            'alamat' => [
+                'required'
+            ],
+            'mata_pelajaran' => [
+                'required'
+            ]
+
+            ],
+
+            [
+                'nama.required' => 'Nama wajib diisi',
+                'nama.regex' => 'Nama hanya boleh huruf',
+
+                'email.required' => 'Email wajib diisi',
+                'email.email' => 'Format email tidak valid',
+                'email.unique' => 'Email sudah digunakan',
+
+                'no_hp.required' => 'No HP wajib diisi',
+                'no_hp.numeric' => 'No HP hanya boleh angka',
+
+                'alamat.required' => 'Alamat wajib diisi',
+                'mata_pelajaran.required' => 'Mata pelajaran wajib dipilih'
+
         ]);
+
         // buat akun login guru
         $user = User::create([
             'name' => $request->nama,
@@ -52,7 +88,6 @@ class GuruController extends Controller
     public function edit($id)
     {
         $guru = Guru::findOrFail($id);
-
         $mapel = MataPelajaran::all();
 
         return view('admin.guru.edit', compact('guru', 'mapel'));
@@ -61,8 +96,49 @@ class GuruController extends Controller
     public function update(Request $request, $id)
     {
         $guru = Guru::findOrFail($id);
+        $request->validate([
 
-        $guru->update($request->all());
+            'nama' => [
+                'required',
+                'regex:/^[A-Za-z\s]+$/'
+            ],
+            'email' => [
+                'required',
+                'email'
+            ],
+            'no_hp' => [
+                'required',
+                'numeric'
+            ],
+            'alamat' => [
+                'required'
+            ],
+            'mata_pelajaran' => [
+                'required'
+            ]
+        ], [
+            'nama.required' => 'Nama wajib diisi',
+            'nama.regex' => 'Nama hanya boleh huruf',
+
+            'email.required' => 'Email wajib diisi',
+            'email.email' => 'Format email tidak valid',
+
+            'no_hp.required' => 'No HP wajib diisi',
+            'no_hp.numeric' => 'No HP hanya boleh angka',
+
+            'alamat.required' => 'Alamat wajib diisi',
+
+            'mata_pelajaran.required' => 'Mata pelajaran wajib dipilih'
+
+        ]);
+
+        $guru->update([
+            'nama' => $request->nama,
+            'email' => $request->email,
+            'no_hp' => $request->no_hp,
+            'alamat' => $request->alamat,
+            'mata_pelajaran' => $request->mata_pelajaran
+        ]);
 
         return redirect()->route('guru.index')->with('success', 'Data guru berhasil diupdate');
     }

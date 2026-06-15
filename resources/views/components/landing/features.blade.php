@@ -21,9 +21,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl mb-6">
                     🏠
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Guru Datang ke Rumah
@@ -38,9 +38,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl mb-6">
                     👨‍🏫
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Tutor Berpengalaman
@@ -55,9 +55,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl mb-6">
                     📖
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Belajar Lebih Fokus
@@ -72,9 +72,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center text-3xl mb-6">
                     🧠
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Metode Menyenangkan
@@ -89,9 +89,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl mb-6">
                     📈
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Progress Belajar Terpantau
@@ -106,9 +106,9 @@
             <div
                 class="bg-slate-50 rounded-3xl p-8 border border-slate-100 hover:border-blue-100 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-orange-100 flex items-center justify-center text-3xl mb-6">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-orange-100 flex items-center justify-center text-3xl mb-6">
                     ⭐
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Jadwal Fleksibel

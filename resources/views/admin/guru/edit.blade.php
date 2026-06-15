@@ -1,49 +1,103 @@
 @extends('layouts.admin')
 
 @section('content')
-    <h1 class="h3 mb-4 text-gray-800">Edit Guru</h1>
+    <h1 class="h3 mb-4 text-gray-800">
+        <i class="fas fa-user-edit text-warning"></i>
+        Edit Guru
+    </h1>
 
-    <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+    <div class="card shadow">
 
-        @csrf
-        @method('PUT')
-
-        <div class="mb-3">
-            <label>Nama</label>
-            <input type="text" name="nama" value="{{ $guru->nama }}" class="form-control">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold">
+                Form Edit Guru
+            </h6>
         </div>
 
-        <div class="mb-3">
-            <label>Email</label>
-            <input type="email" name="email" value="{{ $guru->email }}" class="form-control">
+        <div class="card-body">
+            <form action="{{ route('guru.update', $guru->id) }}" method="POST">
+                @csrf
+                @method('PUT')
+
+                <div class="mb-3">
+                    <label><b>Nama Guru</b></label>
+                    <input type="text" name="nama" value="{{ old('nama', $guru->nama) }}"
+                        class="form-control @error('nama') is-invalid @enderror">
+
+                    @error('nama')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label><b>Email</b></label>
+
+                    <input type="email" name="email" value="{{ old('email', $guru->email) }}"
+                        class="form-control @error('email') is-invalid @enderror">
+
+                    @error('email')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label><b>No HP</b></label>
+                    <input type="text" name="no_hp" value="{{ old('no_hp', $guru->no_hp) }}"
+                        class="form-control @error('no_hp') is-invalid @enderror">
+
+                    @error('no_hp')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label><b>Alamat</b></label>
+
+                    <textarea name="alamat" rows="3" class="form-control @error('alamat') is-invalid @enderror">{{ old('alamat', $guru->alamat) }}</textarea>
+                    @error('alamat')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mb-3">
+                    <label><b>Mata Pelajaran</b></label>
+                    <select name="mata_pelajaran" class="form-control @error('mata_pelajaran') is-invalid @enderror">
+                        @foreach ($mapel as $m)
+                            <option value="{{ $m->nama_mapel }}"
+                                {{ old('mata_pelajaran', $guru->mata_pelajaran) == $m->nama_mapel ? 'selected' : '' }}>
+                                {{ $m->nama_mapel }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('mata_pelajaran')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+                </div>
+
+                <div class="mt-4">
+                    <button type="submit" class="btn btn-warning">
+                        <i class="fas fa-save"></i>
+                        Update
+                    </button>
+
+                    <a href="{{ route('guru.index') }}" class="btn btn-secondary">
+                        <i class="fas fa-arrow-left"></i>
+                        Kembali
+                    </a>
+
+                </div>
+            </form>
         </div>
-
-        <div class="mb-3">
-            <label>No HP</label>
-            <input type="text" name="no_hp" value="{{ $guru->no_hp }}" class="form-control">
-        </div>
-
-        <div class="mb-3">
-            <label>Alamat</label>
-            <textarea name="alamat" class="form-control">{{ $guru->alamat }}</textarea>
-        </div>
-
-        <div class="mb-3">
-            <label>Mata Pelajaran</label>
-            <select name="mata_pelajaran" class="form-control">
-
-                @foreach ($mapel as $m)
-                    <option value="{{ $m->nama_mapel }}" {{ $guru->mata_pelajaran == $m->nama_mapel ? 'selected' : '' }}>
-                        {{ $m->nama_mapel }}
-                    </option>
-                @endforeach
-
-            </select>
-        </div>
-
-        <button class="btn btn-primary">
-            Update
-        </button>
-
-    </form>
+    </div>
 @endsection
