@@ -88,9 +88,8 @@ class MataPelajaranController extends Controller
     public function destroy($id)
     {
         $mapel = MataPelajaran::findOrFail($id);
-
         $mapel->delete();
 
-        return redirect()->route('mata-pelajaran.index');
+        return redirect()->route('mata-pelajaran.index')->with('delete', 'Mata pelajaran berhasil dihapus');
     }
 }

@@ -140,7 +140,7 @@ class GuruController extends Controller
             'mata_pelajaran' => $request->mata_pelajaran
         ]);
 
-        return redirect()->route('guru.index')->with('success', 'Data guru berhasil diupdate');
+        return redirect()->route('guru.index')->with('success', 'Data guru berhasil diubah');
     }
 
     public function destroy($id)
@@ -149,6 +149,6 @@ class GuruController extends Controller
 
         $guru->delete();
 
-        return redirect()->route('guru.index')->with('success', 'Data guru berhasil dihapus');
+        return redirect()->route('guru.index')->with('delete', 'Data guru berhasil dihapus');
     }
 }

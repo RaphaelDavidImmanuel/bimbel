@@ -48,14 +48,18 @@ class JadwalController extends Controller
 
         ]);
 
-        Jadwal::create($request->only([
+            $data = $request->only([
             'guru_id',
             'murid_id',
             'mata_pelajaran',
             'hari',
             'jam',
             'alamat'
-        ]));
+        ]);
+
+        $data['status_notif'] = 0;
+
+        Jadwal::create($data);
 
         return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil ditambahkan');
     }
@@ -102,6 +106,6 @@ class JadwalController extends Controller
 
         $jadwal->delete();
 
-        return redirect()->route('jadwal.index');
+        return redirect()->route('jadwal.index')->with('delete', 'Jadwal berhasil dihapus');
     }
 }

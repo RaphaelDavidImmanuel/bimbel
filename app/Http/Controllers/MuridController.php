@@ -153,6 +153,6 @@ class MuridController extends Controller
 
         $murid->delete();
 
-        return redirect()->route('murid.index')->with('success', 'Data murid berhasil dihapus');
+        return redirect()->route('murid.index')->with('delete', 'Data murid berhasil dihapus');
     }
 }

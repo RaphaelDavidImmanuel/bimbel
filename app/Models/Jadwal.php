@@ -13,7 +13,8 @@ class Jadwal extends Model
         'mata_pelajaran',
         'hari',
         'jam',
-        'alamat'
+        'alamat',
+        'status_notif'
 
     ];
 

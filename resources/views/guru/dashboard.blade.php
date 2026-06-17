@@ -14,6 +14,27 @@
                 Selamat Datang, {{ $guru->nama }}
             </h5>
 
+            @if ($notifJadwal->count() > 0)
+                <div class="alert alert-warning shadow">
+                    <h5 class="mb-3">
+                        🔔 Jadwal Baru Ditambahkan
+                    </h5>
+
+                    <ul class="mb-0">
+                        @foreach ($notifJadwal as $notif)
+                            <li>
+                                <b>{{ $notif->hari }}</b>
+                                jam
+                                <b>{{ substr($notif->jam, 0, 5) }}</b>
+                                -
+                                {{ $notif->murid->nama_murid }}
+                                ({{ $notif->mata_pelajaran }})
+                            </li>
+                        @endforeach
+                    </ul>
+                </div>
+            @endif
+
             {{-- <p class="mb-0 text-gray-600">
                 Mata Pelajaran : {{ $guru->mata_pelajaran }}
             </p> --}}

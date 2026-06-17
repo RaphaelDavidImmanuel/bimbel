@@ -67,7 +67,7 @@
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('murid.destroy', $m->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('murid.destroy', $m->id) }}" method="POST" class="form-delete d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm"

@@ -68,7 +68,7 @@
                                         Edit
                                     </a>
 
-                                    <form action="{{ route('guru.destroy', $g->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('guru.destroy', $g->id) }}" method="POST" class="form-delete d-inline">
                                         @csrf
                                         @method('DELETE')
 
