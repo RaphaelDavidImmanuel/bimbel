@@ -21,8 +21,10 @@
 
                 <div class="mb-3">
                     <label><b>Nama Guru</b></label>
-                    <input type="text" name="nama" value="{{ old('nama', $guru->nama) }}"
+                    <input type="text" id="nama" name="nama" value="{{ old('nama', $guru->nama) }}"
                         class="form-control @error('nama') is-invalid @enderror">
+
+                    <small id="namaError" class="text-danger"></small>
 
                     @error('nama')
                         <div class="invalid-feedback">
@@ -46,8 +48,10 @@
 
                 <div class="mb-3">
                     <label><b>No HP</b></label>
-                    <input type="text" name="no_hp" value="{{ old('no_hp', $guru->no_hp) }}"
+                    <input type="text" id="no_hp" name="no_hp" value="{{ old('no_hp', $guru->no_hp) }}"
                         class="form-control @error('no_hp') is-invalid @enderror">
+
+                    <small id="hpError" class="text-danger"></small>
 
                     @error('no_hp')
                         <div class="invalid-feedback">
@@ -100,4 +104,72 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ==========================
+            // VALIDASI NAMA
+            // ==========================
+
+            const nama = document.getElementById('nama');
+            const namaError = document.getElementById('namaError');
+
+            nama.addEventListener('input', function() {
+
+                let value = this.value;
+
+                // hanya huruf dan spasi
+                let filtered = value.replace(/[^a-zA-Z\s]/g, '');
+
+                if (value !== filtered) {
+
+                    namaError.innerText = 'Nama hanya boleh huruf';
+
+                    this.classList.add('is-invalid');
+
+                } else {
+
+                    namaError.innerText = '';
+
+                    this.classList.remove('is-invalid');
+
+                }
+
+                this.value = filtered;
+
+            });
+
+
+
+            // ==========================
+            // VALIDASI NO HP
+            // ==========================
+
+            const hp = document.getElementById('no_hp');
+            const hpError = document.getElementById('hpError');
+
+            hp.addEventListener('input', function() {
+
+                let value = this.value;
+
+                // hanya angka
+                let filtered = value.replace(/[^0-9]/g, '');
+
+                // maksimal 15 digit
+                if (filtered.length > 15) {
+                    filtered = filtered.substring(0, 15);
+                    hpError.innerText = 'No HP maksimal 15 digit';
+                } else if (value !== filtered) {
+                    hpError.innerText = 'No HP hanya boleh angka';
+                } else {
+                    hpError.innerText = '';
+                }
+
+                this.value = filtered;
+
+            });
+
+        });
+    </script>
 @endsection

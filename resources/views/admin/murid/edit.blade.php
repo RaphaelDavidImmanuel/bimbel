@@ -24,8 +24,10 @@
                 <div class="mb-3">
                     <label><b>Nama Murid</b></label>
 
-                    <input type="text" name="nama_murid" value="{{ old('nama_murid', $murid->nama_murid) }}"
+                    <input type="text" id="nama" name="nama_murid" value="{{ old('nama_murid', $murid->nama_murid) }}"
                         class="form-control @error('nama_murid') is-invalid @enderror">
+
+                    <small id="namaError" class="text-danger"></small>
 
                     @error('nama_murid')
                         <div class="invalid-feedback">
@@ -37,8 +39,10 @@
                 <div class="mb-3">
                     <label><b>Nama Orang Tua</b></label>
 
-                    <input type="text" name="nama_orangtua" value="{{ old('nama_orangtua', $murid->nama_orangtua) }}"
+                    <input type="text" id="nama_orangtua" name="nama_orangtua" value="{{ old('nama_orangtua', $murid->nama_orangtua) }}"
                         class="form-control @error('nama_orangtua') is-invalid @enderror">
+
+                        <small id="namaortuError" class="text-danger"></small>
 
                     @error('nama_orangtua')
                         <div class="invalid-feedback">
@@ -50,8 +54,10 @@
                 <div class="mb-3">
                     <label><b>No HP</b></label>
 
-                    <input type="text" name="no_hp" value="{{ old('no_hp', $murid->no_hp) }}"
+                    <input type="text" id="no_hp" name="no_hp" value="{{ old('no_hp', $murid->no_hp) }}"
                         class="form-control @error('no_hp') is-invalid @enderror">
+
+                        <small id="hpError" class="text-danger"></small>
 
                     @error('no_hp')
                         <div class="invalid-feedback">
@@ -107,8 +113,95 @@
                 </a>
 
             </form>
-
         </div>
-
     </div>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ==========================
+            // VALIDASI NAMA
+            // ==========================
+
+            const nama = document.getElementById('nama');
+            const namaError = document.getElementById('namaError');
+
+            nama.addEventListener('input', function() {
+                let value = this.value;
+
+                // hanya huruf dan spasi
+                let filtered = value.replace(/[^a-zA-Z\s]/g, '');
+
+                if (value !== filtered) {
+                    namaError.innerText = 'Nama hanya boleh huruf';
+                    this.classList.add('is-invalid');
+
+                } else {
+                    namaError.innerText = '';
+                    this.classList.remove('is-invalid');
+                }
+                this.value = filtered;
+
+            });
+
+            // ==========================
+            // VALIDASI NAMA ORANG TUA
+            // ==========================
+
+            const namaOrtu = document.getElementById('nama_orangtua');
+            const namaortuError = document.getElementById('namaortuError');
+
+            namaOrtu.addEventListener('input', function() {
+
+                let value = this.value;
+
+                // hanya huruf dan spasi
+                let filtered = value.replace(/[^a-zA-Z\s]/g, '');
+
+                if (value !== filtered) {
+
+                    namaortuError.innerText =
+                        'Nama orang tua hanya boleh huruf';
+
+                    this.classList.add('is-invalid');
+                } else {
+
+                    namaortuError.innerText = '';
+                    this.classList.remove('is-invalid');
+                }
+                this.value = filtered;
+
+            });
+
+
+
+            // ==========================
+            // VALIDASI NO HP
+            // ==========================
+
+            const hp = document.getElementById('no_hp');
+            const hpError = document.getElementById('hpError');
+
+            hp.addEventListener('input', function() {
+
+                let value = this.value;
+
+                // hanya angka
+                let filtered = value.replace(/[^0-9]/g, '');
+
+                // maksimal 15 digit
+                if (filtered.length > 15) {
+                    filtered = filtered.substring(0, 15);
+                    hpError.innerText = 'No HP maksimal 15 digit';
+                } else if (value !== filtered) {
+                    hpError.innerText = 'No HP hanya boleh angka';
+                } else {
+                    hpError.innerText = '';
+                }
+
+                this.value = filtered;
+
+            });
+
+        });
+    </script>
 @endsection

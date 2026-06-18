@@ -18,8 +18,11 @@
                 @csrf
                 <div class="mb-3">
                     <label><b>Nama Mata Pelajaran</b></label>
-                    <input type="text" name="nama_mapel" value="{{ old('nama_mapel') }}"
+                    <input type="text" id="nama_mapel" name="nama_mapel" value="{{ old('nama_mapel') }}"
                         class="form-control @error('nama_mapel') is-invalid @enderror" placeholder="Contoh: Matematika">
+
+                    <small id="mapelError" class="text-danger"></small>
+
                     @error('nama_mapel')
                         <div class="invalid-feedback">
                             {{ $message }}
@@ -40,4 +43,37 @@
             </form>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            const mapel = document.getElementById('nama_mapel');
+            const mapelError = document.getElementById('mapelError');
+
+            mapel.addEventListener('input', function() {
+
+                let value = this.value;
+
+                // hanya huruf, spasi dan titik
+                let filtered = value.replace(/[^a-zA-Z\s.]/g, '');
+
+                if (value !== filtered) {
+
+                    mapelError.innerText =
+                        'Mata pelajaran hanya boleh huruf';
+
+                    this.classList.add('is-invalid');
+
+                } else {
+
+                    mapelError.innerText = '';
+                    this.classList.remove('is-invalid');
+                }
+
+                this.value = filtered;
+
+            });
+
+        });
+    </script>
 @endsection
