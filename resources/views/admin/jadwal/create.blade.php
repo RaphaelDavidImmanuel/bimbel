@@ -19,6 +19,35 @@
             <form action="{{ route('jadwal.store') }}" method="POST">
 
                 @csrf
+                {{-- Murid --}}
+                <div class="mb-3">
+
+                    <label><b>Murid</b></label>
+
+                    <select name="murid_id" id="muridSelect" class="form-control @error('murid_id') is-invalid @enderror">
+
+                        <option value="">
+                            -- Pilih Murid --
+                        </option>
+
+                        @foreach ($murid as $m)
+                            <option value="{{ $m->id }}" data-mapel="{{ $m->mata_pelajaran }}"
+                                data-alamat="{{ $m->alamat }}" {{ old('murid_id') == $m->id ? 'selected' : '' }}>
+
+                                {{ $m->nama_murid }}
+
+                            </option>
+                        @endforeach
+
+                    </select>
+
+                    @error('murid_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
 
                 {{-- Guru --}}
                 <div class="mb-3">
@@ -51,35 +80,6 @@
 
                 </div>
 
-                {{-- Murid --}}
-                <div class="mb-3">
-
-                    <label><b>Murid</b></label>
-
-                    <select name="murid_id" id="muridSelect" class="form-control @error('murid_id') is-invalid @enderror">
-
-                        <option value="">
-                            -- Pilih Murid --
-                        </option>
-
-                        @foreach ($murid as $m)
-                            <option value="{{ $m->id }}" data-mapel="{{ $m->mata_pelajaran }}"
-                                data-alamat="{{ $m->alamat }}" {{ old('murid_id') == $m->id ? 'selected' : '' }}>
-
-                                {{ $m->nama_murid }}
-
-                            </option>
-                        @endforeach
-
-                    </select>
-
-                    @error('murid_id')
-                        <div class="invalid-feedback">
-                            {{ $message }}
-                        </div>
-                    @enderror
-
-                </div>
 
                 {{-- Mata Pelajaran --}}
                 <div class="mb-3">

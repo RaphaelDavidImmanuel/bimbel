@@ -123,6 +123,17 @@
         </script>
     @endif
 
+    @if (session('error'))
+        <script>
+            Swal.fire({
+                icon: 'error',
+                title: 'Jadwal Bentrok',
+                text: '{{ session('error') }}',
+                confirmButtonColor: '#d33'
+            });
+        </script>
+    @endif
+
     <script>
         document.querySelectorAll('.form-delete').forEach(form => {
 

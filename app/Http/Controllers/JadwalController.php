@@ -48,20 +48,27 @@ class JadwalController extends Controller
 
         ]);
 
+        // CEK JADWAL BENTROK
+        $cekJadwal = Jadwal::where('guru_id', $request->guru_id)->where('hari', $request->hari)->where('jam', $request->jam)->exists();
+
+            if ($cekJadwal) {
+
+            return redirect()->back()->withInput()->with('error','Jadwal tidak bisa dibuat, karena guru sudah memiliki jadwal pada hari dan jam tersebut, mohon mengubah hari atau jam yaa');
+            }
+
             $data = $request->only([
-            'guru_id',
-            'murid_id',
-            'mata_pelajaran',
-            'hari',
-            'jam',
-            'alamat'
-        ]);
+                'guru_id',
+                'murid_id',
+                'mata_pelajaran',
+                'hari',
+                'jam',
+                'alamat'
+            ]);
 
-        $data['status_notif'] = 0;
+            $data['status_notif'] = 0;
+            Jadwal::create($data);
 
-        Jadwal::create($data);
-
-        return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil ditambahkan');
+            return redirect()->route('jadwal.index')->with('success', 'Jadwal berhasil ditambahkan');
     }
 
     public function edit($id)
