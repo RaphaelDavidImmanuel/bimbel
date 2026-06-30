@@ -14,8 +14,8 @@ class Jadwal extends Model
         'hari',
         'jam',
         'alamat',
-        'status_notif'
-
+        'status_notif',
+        'status_mengajar'
     ];
 
     public function guru()
