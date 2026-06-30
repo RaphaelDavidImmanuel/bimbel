@@ -6,8 +6,8 @@ use Illuminate\Http\Request;
 use App\Models\Guru;
 use App\Models\Murid;
 use App\Models\MataPelajaran;
-use Carbon\Carbon;
 use App\Models\Jadwal;
+use Carbon\Carbon;
 
 class DashboardController extends Controller
 {
@@ -30,12 +30,19 @@ class DashboardController extends Controller
         $hariIni = Carbon::now()->locale('id')->translatedFormat('l');
         $jadwalHariIni = Jadwal::with('murid')->where('guru_id', $guru->id)->where('hari', $hariIni)->get();
 
+        $notifJadwal = Jadwal::with('murid')->where('guru_id', $guru->id)->where('status_notif', 0)->get();
+
+        Jadwal::where('guru_id', $guru->id)->where('status_notif', 0)->update([
+            'status_notif' => 1
+        ]);
+
         return view('guru.dashboard', compact(
             'guru',
             'totalJadwal',
             'totalMurid',
             'hariIni',
-            'jadwalHariIni'
+            'jadwalHariIni',
+            'notifJadwal'
         ));
     }
 

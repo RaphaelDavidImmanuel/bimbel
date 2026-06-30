@@ -22,6 +22,7 @@
                             <th>Nama Murid</th>
                             <th>Orang Tua</th>
                             <th>No HP</th>
+                            <th>Alamat</th>
                             <th>Mata Pelajaran</th>
                         </tr>
                     </thead>
@@ -42,6 +43,12 @@
                                 <td>
                                     <i class="fas fa-phone text-info"></i>
                                     {{ $murid->no_hp }}
+                                </td>
+
+                                <td>
+                                    <span class="badge badge-info px-3 py-2">
+                                        {{ $murid->alamat }}
+                                    </span>
                                 </td>
 
                                 <td>

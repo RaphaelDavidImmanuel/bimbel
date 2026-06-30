@@ -2,96 +2,161 @@
 
 @section('content')
     <h1 class="h3 mb-4 text-gray-800">
+        <i class="fas fa-edit text-warning"></i>
         Edit Jadwal
     </h1>
 
-    <form action="{{ route('jadwal.update', $jadwal->id) }}" method="POST">
-
-        @csrf
-        @method('PUT')
-
-        <div class="mb-3">
-            <label>Guru</label>
-            <select name="guru_id" class="form-control">
-
-                @foreach ($guru as $g)
-                    <option value="{{ $g->id }}" {{ $jadwal->guru_id == $g->id ? 'selected' : '' }}>
-                        {{ $g->nama }}
-                    </option>
-                @endforeach
-
-            </select>
+    <div class="card shadow">
+        <div class="card-header py-3">
+            <h6 class="m-0 font-weight-bold text-warning">
+                Form Edit Jadwal
+            </h6>
         </div>
 
-        <div class="mb-3">
-            <label>Murid</label>
-            <select name="murid_id" class="form-control">
+        <div class="card-body">
+            <form action="{{ route('jadwal.update', $jadwal->id) }}" method="POST">
+                @csrf
+                @method('PUT')
 
-                @foreach ($murid as $m)
-                    <option value="{{ $m->id }}" {{ $jadwal->murid_id == $m->id ? 'selected' : '' }}>
-                        {{ $m->nama_murid }}
-                    </option>
-                @endforeach
-            </select>
+                {{-- Guru --}}
+                <div class="mb-3">
+                    <label><b>Guru</b></label>
+                    <select name="guru_id" id="guruSelect" class="form-control @error('guru_id') is-invalid @enderror">
+                        @foreach ($guru as $g)
+                            <option value="{{ $g->id }}" data-mapel="{{ $g->mata_pelajaran }}"
+                                {{ $jadwal->guru_id == $g->id ? 'selected' : '' }}>
+
+                                {{ $g->nama }}
+                                - {{ $g->mata_pelajaran }}
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('guru_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
+                {{-- Murid --}}
+                <div class="mb-3">
+                    <label><b>Murid</b></label>
+                    <select name="murid_id" id="muridSelect" class="form-control @error('murid_id') is-invalid @enderror">
+
+                        @foreach ($murid as $m)
+                            <option value="{{ $m->id }}" data-mapel="{{ $m->mata_pelajaran }}"
+                                data-alamat="{{ $m->alamat }}" {{ $jadwal->murid_id == $m->id ? 'selected' : '' }}>
+
+                                {{ $m->nama_murid }}
+
+                            </option>
+                        @endforeach
+                    </select>
+
+                    @error('murid_id')
+                        <div class="invalid-feedback">
+                            {{ $message }}
+                        </div>
+                    @enderror
+
+                </div>
+
+                {{-- Mata Pelajaran --}}
+                <div class="mb-3">
+                    <label><b>Mata Pelajaran</b></label>
+                    <input type="text" name="mata_pelajaran" id="mapelInput" value="{{ $jadwal->mata_pelajaran }}"
+                        class="form-control" readonly>
+                </div>
+
+                {{-- Hari --}}
+                <div class="mb-3">
+                    <label><b>Hari</b></label>
+                    <select name="hari" class="form-control @error('hari') is-invalid @enderror">
+
+                        <option value="Senin" {{ $jadwal->hari == 'Senin' ? 'selected' : '' }}>Senin</option>
+
+                        <option value="Selasa" {{ $jadwal->hari == 'Selasa' ? 'selected' : '' }}>Selasa</option>
+
+                        <option value="Rabu" {{ $jadwal->hari == 'Rabu' ? 'selected' : '' }}>Rabu</option>
+
+                        <option value="Kamis" {{ $jadwal->hari == 'Kamis' ? 'selected' : '' }}>Kamis</option>
+
+                        <option value="Jumat" {{ $jadwal->hari == 'Jumat' ? 'selected' : '' }}>Jumat</option>
+
+                        <option value="Sabtu" {{ $jadwal->hari == 'Sabtu' ? 'selected' : '' }}>Sabtu</option>
+
+                    </select>
+                </div>
+
+                {{-- Jam --}}
+                <div class="mb-3">
+                    <label><b>Jam</b></label>
+                    <input type="time" name="jam" value="{{ $jadwal->jam }}" class="form-control">
+                </div>
+
+                {{-- Alamat --}}
+                <div class="mb-3">
+                    <label><b>Alamat</b></label>
+                    <textarea name="alamat" id="alamatInput" rows="3" class="form-control" readonly>{{ $jadwal->alamat }}</textarea>
+                </div>
+
+                <button class="btn btn-warning">
+                    <i class="fas fa-save"></i>
+                    Update
+                </button>
+
+                <a href="{{ route('jadwal.index') }}" class="btn btn-secondary">
+                    <i class="fas fa-arrow-left"></i>
+                    Kembali
+                </a>
+
+            </form>
         </div>
+    </div>
 
-        <div class="mb-3">
-            <label>Mata Pelajaran</label>
+    <script>
+        document.getElementById('muridSelect')
+            .addEventListener('change', function() {
 
-            <select name="mata_pelajaran" class="form-control">
-                @foreach ($mapel as $m)
-                    <option value="{{ $m->nama_mapel }}" {{ $jadwal->mata_pelajaran == $m->nama_mapel ? 'selected' : '' }}>
+                let selectedOption =
+                    this.options[this.selectedIndex];
 
-                        {{ $m->nama_mapel }}
+                let mapel =
+                    selectedOption.getAttribute('data-mapel');
 
-                    </option>
-                @endforeach
-            </select>
-        </div>
+                let alamat =
+                    selectedOption.getAttribute('data-alamat');
 
-        <div class="mb-3">
-            <label>Hari</label>
+                document.getElementById('mapelInput').value =
+                    mapel ?? '';
 
-            <select name="hari" class="form-control">
-                <option {{ $jadwal->hari == 'Senin' ? 'selected' : '' }}>
-                    Senin
-                </option>
+                document.getElementById('alamatInput').value =
+                    alamat ?? '';
 
-                <option {{ $jadwal->hari == 'Selasa' ? 'selected' : '' }}>
-                    Selasa
-                </option>
+                let guruSelect =
+                    document.getElementById('guruSelect');
 
-                <option {{ $jadwal->hari == 'Rabu' ? 'selected' : '' }}>
-                    Rabu
-                </option>
+                let guruOptions =
+                    guruSelect.options;
 
-                <option {{ $jadwal->hari == 'Kamis' ? 'selected' : '' }}>
-                    Kamis
-                </option>
+                for (let i = 0; i < guruOptions.length; i++) {
 
-                <option {{ $jadwal->hari == 'Jumat' ? 'selected' : '' }}>
-                    Jumat
-                </option>
+                    let guruMapel =
+                        guruOptions[i].getAttribute('data-mapel');
 
-                <option {{ $jadwal->hari == 'Sabtu' ? 'selected' : '' }}>
-                    Sabtu
-                </option>
-            </select>
-        </div>
+                    if (
+                        guruMapel == mapel ||
+                        guruMapel == null
+                    ) {
+                        guruOptions[i].style.display = '';
+                    } else {
+                        guruOptions[i].style.display = 'none';
+                    }
 
-        <div class="mb-3">
-            <label>Jam</label>
-            <input type="time" name="jam" value="{{ $jadwal->jam }}" class="form-control">
-        </div>
+                }
 
-        <div class="mb-3">
-            <label>Alamat</label>
-            <textarea name="alamat" class="form-control">{{ $jadwal->alamat }}</textarea>
-        </div>
-
-        <button class="btn btn-primary">
-            Update
-        </button>
-
-    </form>
+            });
+    </script>
 @endsection

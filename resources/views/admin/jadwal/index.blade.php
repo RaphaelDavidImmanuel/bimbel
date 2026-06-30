@@ -68,12 +68,13 @@
                                 </td>
                                 <td>
 
-                                    <a href="{{ route('jadwal.edit', $j->id) }}" class="btn btn-warning btn-sm">
+                                    {{-- <a href="{{ route('jadwal.edit', $j->id) }}" class="btn btn-warning btn-sm">
                                         <i class="fas fa-edit"></i>
                                         Edit
-                                    </a>
+                                    </a> --}}
 
-                                    <form action="{{ route('jadwal.destroy', $j->id) }}" method="POST" class="d-inline">
+                                    <form action="{{ route('jadwal.destroy', $j->id) }}" method="POST"
+                                        class="form-delete d-inline">
                                         @csrf
                                         @method('DELETE')
                                         <button class="btn btn-danger btn-sm"

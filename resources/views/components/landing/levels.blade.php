@@ -21,9 +21,9 @@
             <div
                 class="bg-gradient-to-br from-pink-50 to-white border border-pink-100 rounded-3xl p-8 hover:shadow-xl transition">
 
-                <div class="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center mb-6 text-2xl">
+                {{-- <div class="w-14 h-14 rounded-2xl bg-pink-100 flex items-center justify-center mb-6 text-2xl">
                     🎨
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Pra Sekolah & TK
@@ -44,9 +44,9 @@
             <div
                 class="bg-gradient-to-br from-blue-50 to-white border border-blue-100 rounded-3xl p-8 hover:shadow-xl transition">
 
-                <div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-6 text-2xl">
+                {{-- <div class="w-14 h-14 rounded-2xl bg-blue-100 flex items-center justify-center mb-6 text-2xl">
                     📚
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Sekolah Dasar
@@ -68,9 +68,9 @@
             <div
                 class="bg-gradient-to-br from-yellow-50 to-white border border-yellow-100 rounded-3xl p-8 hover:shadow-xl transition">
 
-                <div class="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center mb-6 text-2xl">
+                {{-- <div class="w-14 h-14 rounded-2xl bg-yellow-100 flex items-center justify-center mb-6 text-2xl">
                     ✏️
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     SMP

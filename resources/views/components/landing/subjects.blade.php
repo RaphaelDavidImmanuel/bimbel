@@ -20,10 +20,10 @@
             {{-- Calistung --}}
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition duration-300 group ">
 
-                <div
+                {{-- <div
                     class="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
                     ✏️
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Calistung
@@ -41,10 +41,10 @@
             {{-- Inggris --}}
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition duration-300 group">
 
-                <div
+                {{-- <div
                     class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
                     🇬🇧
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Bahasa Inggris
@@ -62,10 +62,10 @@
             {{-- Matematika --}}
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition duration-300 group">
 
-                <div
+                {{-- <div
                     class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
                     📘
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Matematika
@@ -83,10 +83,10 @@
             {{-- Math in English --}}
             <div class="bg-white rounded-3xl p-8 shadow-sm hover:shadow-2xl transition duration-300 group">
 
-                <div
+                {{-- <div
                     class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center text-3xl mb-6 group-hover:scale-110 transition">
                     🌍
-                </div>
+                </div> --}}
 
                 <h3 class="text-2xl font-bold text-gray-900 mb-3">
                     Math in English

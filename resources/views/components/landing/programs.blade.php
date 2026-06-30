@@ -25,9 +25,9 @@
             <div
                 class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-pink-100 flex items-center justify-center text-3xl">
                     📚
-                </div>
+                </div> --}}
 
                 <h3 class="mt-6 text-2xl font-bold text-slate-900">
                     Calistung
@@ -43,9 +43,10 @@
             {{-- Card Bahasa Inggris --}}
             <div
                 class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
-                <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl">
+
+                {{-- <div class="w-16 h-16 rounded-2xl bg-blue-100 flex items-center justify-center text-3xl">
                     🇬🇧
-                </div>
+                </div> --}}
 
                 <h3 class="mt-6 text-2xl font-bold text-slate-900">
                     Bahasa Inggris
@@ -62,9 +63,9 @@
             <div
                 class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
-                <div class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-yellow-100 flex items-center justify-center text-3xl">
                     ➗
-                </div>
+                </div> --}}
 
                 <h3 class="mt-6 text-2xl font-bold text-slate-900">
                     Matematika
@@ -78,7 +79,8 @@
             </div>
 
             {{-- Card Bahasa Indonesia --}}
-            <div
+
+            {{-- <div
                 class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
 
                 <div class="w-16 h-16 rounded-2xl bg-green-100 flex items-center justify-center text-3xl">
@@ -94,14 +96,14 @@
                     memahami soal, dan menulis dengan baik.
                 </p>
 
-            </div>
+            </div> --}}
 
             {{-- Card Math In English --}}
             <div
                 class="bg-slate-50 rounded-[32px] p-8 border border-slate-100 hover:border-blue-200 hover:shadow-2xl hover:-translate-y-1 transition duration-300">
-                <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl">
+                {{-- <div class="w-16 h-16 rounded-2xl bg-purple-100 flex items-center justify-center text-3xl">
                     🧠
-                </div>
+                </div> --}}
 
                 <h3 class="mt-6 text-2xl font-bold text-slate-900">
                     Math in English
@@ -118,9 +120,9 @@
                 class="bg-blue-600 rounded-[32px] p-8 text-white flex flex-col justify-between hover:-translate-y-1 hover:shadow-2xl transition duration-300">
                 <div>
 
-                    <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-3xl">
+                    {{-- <div class="w-16 h-16 rounded-2xl bg-white/20 flex items-center justify-center text-3xl">
                         ⭐
-                    </div>
+                    </div> --}}
 
                     <h3 class="mt-6 text-2xl font-bold">
                         Konsultasi Gratis
