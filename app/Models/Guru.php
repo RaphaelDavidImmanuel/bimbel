@@ -26,6 +26,11 @@ class Guru extends Model
         return $this->belongsTo(User::class);
     }
 
+    public function laporanMengajars()
+    {
+        return $this->hasMany(LaporanMengajar::class);
+    }
+
 
     // use HasFactory;
 }
