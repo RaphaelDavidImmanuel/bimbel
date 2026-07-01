@@ -21,9 +21,16 @@ return new class extends Migration
             $table->time('jam_selesai')->nullable();
             $table->text('materi')->nullable();
             $table->text('catatan')->nullable();
+
             $table->enum('status', [
-                'Sedang Mengajar','Selesai'
-                ])->default('Sedang Mengajar');
+                'Belum Mengajar',
+                'Sedang Mengajar',
+                'Selesai'
+                ])->default('Belum Mengajar');
+
+            // $table->enum('status', [
+            //     'Sedang Mengajar','Selesai'
+            //     ])->default('Sedang Mengajar');
 
             $table->timestamps();
         });
