@@ -4,18 +4,26 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Jadwal extends Model
+class LaporanMengajar extends Model
 {
     protected $fillable = [
+
+        'jadwal_id',
         'guru_id',
         'murid_id',
-        'mata_pelajaran',
-        'hari',
-        'jam',
-        'alamat',
-        'status_notif',
-        'status_mengajar'
+        'tanggal',
+        'jam_mulai',
+        'jam_selesai',
+        'materi',
+        'catatan',
+        'status'
+
     ];
+
+    public function jadwal()
+    {
+        return $this->belongsTo(Jadwal::class);
+    }
 
     public function guru()
     {
@@ -25,10 +33,5 @@ class Jadwal extends Model
     public function murid()
     {
         return $this->belongsTo(Murid::class);
-    }
-
-    public function laporanMengajar()
-    {
-        return $this->hasOne(LaporanMengajar::class);
     }
 }

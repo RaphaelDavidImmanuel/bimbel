@@ -7,6 +7,7 @@ use App\Http\Controllers\MuridController;
 use App\Http\Controllers\MataPelajaranController;
 use App\Http\Controllers\JadwalController;
 use App\Http\Controllers\LandingPageController;
+
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -38,6 +39,7 @@ Route::post('/daftar',
 Route::get('/dashboard', function () {
     return view('dashboard');
 })->middleware(['auth', 'verified'])->name('dashboard');
+
 
 // untuk cek user yang login
 // Route::get('/cek-user', function () {

@@ -19,4 +19,10 @@ class Murid extends Model
     {
         return $this->hasMany(Jadwal::class);
     }
+
+    public function laporanMengajars()
+    {
+        return $this->hasMany(LaporanMengajar::class);
+    }
+
 }
