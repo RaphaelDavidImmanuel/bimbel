@@ -64,6 +64,14 @@
                 </a>
             </li>
 
+            <!-- Laporan Mengajar -->
+            <li class="nav-item">
+                <a class="nav-link" href="{{ route('laporan.index') }}">
+                    <i class="fas fa-fw fa-file-alt"></i>
+                    <span>Laporan Mengajar</span>
+                </a>
+            </li>
+
             <hr class="sidebar-divider">
 
             <!-- Logout -->
