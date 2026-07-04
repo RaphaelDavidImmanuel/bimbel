@@ -71,6 +71,28 @@ Route::get('/redirect', function () {
 
 /*
 |--------------------------------------------------------------------------
+| GURU
+|--------------------------------------------------------------------------
+*/
+
+Route::prefix('guru')
+    ->middleware(['auth', 'role:guru'])
+    ->group(function () {
+
+        Route::get('/dashboard', [DashboardController::class, 'guru'])
+            ->name('guru.dashboard');
+
+        Route::get('/jadwal', [DashboardController::class, 'jadwalGuru'])
+            ->name('guru.jadwal');
+
+        Route::get('/murid', [DashboardController::class, 'muridGuru'])
+            ->name('guru.murid');
+
+    });
+
+
+/*
+|--------------------------------------------------------------------------
 | ADMIN
 |--------------------------------------------------------------------------
 */
@@ -92,26 +114,7 @@ Route::middleware(['auth', 'role:admin'])->group(function () {
         ->only(['index', 'show']);
 });
 
-/*
-|--------------------------------------------------------------------------
-| GURU
-|--------------------------------------------------------------------------
-*/
 
-Route::prefix('guru')
-    ->middleware(['auth', 'role:guru'])
-    ->group(function () {
-
-        Route::get('/dashboard', [DashboardController::class, 'guru'])
-            ->name('guru.dashboard');
-
-        Route::get('/jadwal', [DashboardController::class, 'jadwalGuru'])
-            ->name('guru.jadwal');
-
-        Route::get('/murid', [DashboardController::class, 'muridGuru'])
-            ->name('guru.murid');
-
-    });
 
 /*
 |--------------------------------------------------------------------------
