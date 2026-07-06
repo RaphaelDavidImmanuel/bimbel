@@ -7,24 +7,24 @@
 
             <!-- Logo -->
             <div class="text-center mb-8">
-                <div class="w-28 h-28 mx-auto bg-white rounded-3xl shadow-2xl flex items-center justify-center p-3">
-                    <img src="img/logo.png" alt="Logo Les Private Depok" class="w-full h-full object-contain">
-
-                    {{-- <svg xmlns="http://www.w3.org/2000/svg" class="w-10 h-10 text-white" fill="none" viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
-                            d="M12 14l9-5-9-5-9 5 9 5zm0 0v6m0-6L3 9m18 0l-9 5" />
-                    </svg> --}}
+                <div class="relative w-32 h-32 mx-auto">
+                    <div class="absolute inset-0 bg-white/20 rounded-full blur-xl"></div>
+                    <div
+                        class="relative w-full h-full bg-white rounded-full shadow-2xl flex items-center justify-center p-4">
+                        <img src="{{ asset('img/logo.png') }}" alt="Logo" class="w-full h-full object-contain">
+                    </div>
                 </div>
 
-                <h1 class="mt-4 text-3xl font-bold text-white">
+                <h1 class="mt-6 text-4xl font-bold text-white">
                     Les Privat Depok
                 </h1>
 
                 <p class="text-blue-100 mt-2">
                     Sistem Login Administrator & Guru
                 </p>
+
             </div>
+            {{-- akhir logo login --}}
 
             <!-- Card Login -->
             <div class="bg-white rounded-3xl shadow-2xl p-8">
@@ -70,8 +70,8 @@
                         </button>
                     </div>
                 </form>
-
             </div>
+            {{-- akhir card login --}}
 
             <div class="text-center mt-5 text-sm text-white/80">
                 © {{ date('Y') }} LPD
