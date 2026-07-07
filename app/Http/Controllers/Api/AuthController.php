@@ -56,4 +56,23 @@ class AuthController extends Controller
             'message' => 'Logout berhasil'
         ]);
     }
+
+    public function profile(Request $request)
+    {
+        $guru = $request->user();
+
+        return response()->json([
+            'success' => true,
+            'message' => 'Profil guru berhasil diambil.',
+            'data' => [
+                'id' => $guru->id,
+                'nama' => $guru->nama,
+                'email' => $guru->email,
+                'no_hp' => $guru->no_hp,
+                'mata_pelajaran' => $guru->mata_pelajaran,
+                'alamat' => $guru->alamat,
+                'created_at' => $guru->created_at,
+            ]
+        ]);
+    }
 }
